@@ -4,7 +4,7 @@
 call plug#begin()
 
 "Theme
-Plug 'morhetz/gruvbox'
+Plug 'folke/tokyonight.nvim'
 "Language server (?)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-python', 'coc-sh', 'coc-go', 'coc-rls', 'coc-yaml', 'coc-json']
@@ -14,6 +14,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 call plug#end()
 
@@ -21,7 +22,7 @@ call plug#end()
 ""Config Section
 
 "Theme
-colorscheme gruvbox
+colorscheme tokyonight 
 
 "File explorer
 let g:NERDTreeShowHidden = 1
@@ -75,8 +76,23 @@ set colorcolumn=80
 
 " Telescope open
 noremap <F2> :Telescope find_files<CR>
-noremap <F3> :Telescope <CR>
+noremap <F3> :Ex<CR>
+noremap <F4> :Telescope<CR>
+
 
 " Switching between open buffers
 nnoremap <C-Tab> :bn<CR>
 nnoremap <C-S-Tab> :bp<CR>
+
+
+" Treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,     
+    },
+    incremental_selection = {
+        enable = true,
+    },
+}
+EOF
