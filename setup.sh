@@ -1,21 +1,22 @@
 #!/bin/bash
 
-# Linux -> Run with sudo
+# For Linux users -> Run with sudo
+
+# Determine the system's package manager and us it to install needed packages
+PACKAGE_MANAGER=${1}  # (f.e. apt, yum, brew)
 
 install_packages () {
-    # Determine the system's package manager and us it to install needed packages
-    PACKAGE_MANAGER=${1}
     ${PACKAGE_MANAGER} update -y && \
     ${PACKAGE_MANAGER} upgrade -y
-    ${PACKAGE_MANAGER} install -y zsh tmux neovim curl fzf which
+    ${PACKAGE_MANAGER} install -y zsh tmux neovim curl fzf
     chsh -s $(which zsh)
 }
 
 get_assets () {
     # Get the p10k source code
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-    # Get the Meslo font
-    git clone https://github.com/ryanoasis/nerd-fonts.git && cd nerd-fonts && ./install.sh Meslo && cd -
+    # Install the Meslo font
+    ./install.sh Meslo
 }
 
 distribute_files () {

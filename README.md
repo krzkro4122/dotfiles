@@ -4,4 +4,5 @@ Includes:
 - tmux
 - neoVim
 - zsh
-- some key bindings for all of those
+- p10k
+- my personal configs for all of the above
