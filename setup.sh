@@ -16,7 +16,8 @@ install_packages () {
     sudo ${PACKAGE_MANAGER} update -y && \
     sudo ${PACKAGE_MANAGER} upgrade -y
     sudo ${PACKAGE_MANAGER} install -y zsh tmux neovim curl fzf
-    sudo chsh -s $(which zsh)
+    chsh -s /bin/zsh
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 }
 
 get_assets () {
@@ -38,7 +39,7 @@ distribute_files () {
 tmux_init () {
     echo "Configuring tmux..."
     tmux source-file ~/.dotfiles/.tmux.conf
-    tmux new
+    # tmux new
 }
 
 install_packages && get_assets && distribute_files && tmux_init

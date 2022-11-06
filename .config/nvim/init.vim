@@ -1,5 +1,7 @@
 " Vim-Plug          
 
+set rtp +=~/.vim
+
 "Plugin Section
 call plug#begin()
 
